@@ -12,6 +12,12 @@ air-blog的Astro框架重构实现的vue版本
 
 
 
+### Home
+
+![首页](./public/preview/preview_index.png)
+
+
+
 
 
 pnpm install 
