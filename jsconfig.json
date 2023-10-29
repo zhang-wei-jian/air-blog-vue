@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve", // 让编译器进行语法分析，但输出格式保持 jsx 格式，后续的处理交给别的工具（比如babel）处理。
+    "jsxFactory": "h", // 这是 vue 的jsx工厂函数
+    "jsxFragmentFactory": "Fragment", // 这是 vue 的jsx碎片函数
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/assets/*": [
+        "src/assets/*"
+      ]
+      // 这里可以仿照上面的格式添加更多别名
+    }
+  }
+}
