@@ -1,45 +1,34 @@
-import { defineComponent, ref, toRefs } from 'vue';
+import { defineComponent, ref, toRefs, onMounted } from 'vue';
 import "/static/js/test"
 
 import txt from "./json";
 import "/static/js/initPost.js"
 import MarkdownIt from 'markdown-it';
-
-
-
-
-// import { remarkParse } from 'remark-parse'
-// import { rehypeStringify } from 'rehype-stringify'
+import md5 from 'md5';
 import { visit } from 'unist-util-visit'
 import { unified } from 'unified'
 
 
-
-
-// import unified from 'unified';
-import markdownParse from 'remark-parse';
-import htmlStringify from 'rehype-stringify';
-// import visit from 'unist-util-visit';
-// 或者你可以根据你的 pipeline 打包设置导入你自己的处理函数
-
-
-// import { visit } from 'unist-util-visit'
-
-
-
-
-
-
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeFormat from 'rehype-format';
+import rehypeStringify from 'rehype-stringify';
 
 
 
 
 export default defineComponent({
-  name: 'MyComponent',
+  name: 'MarkdownPost',
   props: {
-    msg: String
+
   },
   setup(pp, { attrs }) {
+
+
+    onMounted(async () => {
+      // const module = await import('/static/js/initPost.js');
+    })
+
     let md = new MarkdownIt();
     let mdTxtHtml = md.render(txt);
 
@@ -203,18 +192,22 @@ export default defineComponent({
     }
 
     const convertMarkdownToHtml = () => {
-      unified().use(markdownParse).use(pipeline).use(htmlStringify).process(txt, (err, file) => {
-        if (err) throw err;
-        mdTxtHtml = String(file);
-      });
+
+      unified()
+        .use(remarkParse)
+        .use(remarkRehype)
+        .use(pipeline())  // 这里调用你的函数作为插件
+
+        .use(rehypeStringify)
+        .process(txt, (err, file) => {
+          if (err) throw err;
+          mdTxtHtml = String(file)
+          console.log(String(file));
+
+        });
     }
 
-
-
-
-
-
-
+    convertMarkdownToHtml()
 
 
 
@@ -247,7 +240,7 @@ export default defineComponent({
     const { frontmatter } = props
     const type = frontmatter.tags[0]
     const { pubDate, title, description, featured } = frontmatter
-    const dateFormated = 'a1'
+    const dateFormated = '时间叫回来我们很多东西'
     const SITE_LANG = "zh-CN";
 
     return () => (

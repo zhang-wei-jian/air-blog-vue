@@ -42,8 +42,12 @@ function initLazyLoad() {
 
     loadAnimation = (item) => {
       if (item.classList.contains("image-loaded")) return;
+
       let grandSon = item.firstChild.firstChild;
+
       let img = new Image();
+
+
       img.src = grandSon.src;
 
       let sign = md5(grandSon.src);

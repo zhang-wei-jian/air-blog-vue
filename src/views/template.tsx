@@ -37,7 +37,7 @@ export default defineComponent({
             }
           },
           // url，表示指向这篇文章的链接地址
-          url: "",
+          url: "/1",
           author: 'Austin',//
           description: 'des',//
           theme: 'light',//
