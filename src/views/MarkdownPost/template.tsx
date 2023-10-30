@@ -2,7 +2,7 @@ import { defineComponent, ref, toRefs, onMounted } from 'vue';
 import "/static/js/test"
 
 import txt from "./json";
-import "/static/js/initPost.js"
+// import "/static/js/initPost.js"
 import MarkdownIt from 'markdown-it';
 import md5 from 'md5';
 import { visit } from 'unist-util-visit'
@@ -26,7 +26,7 @@ export default defineComponent({
 
 
     onMounted(async () => {
-      // const module = await import('/static/js/initPost.js');
+      const module = await import('/static/js/initPost.js');
     })
 
     let md = new MarkdownIt();
@@ -248,63 +248,63 @@ export default defineComponent({
 
       <>
 
-        <body class: list={["page-article", { "theme-dark": frontmatter.theme === "dark" }]}>
-          <Header />
-          <main id="main" class="main">
-            <section>
-              <article class="article">
-                <div class: list={[{ "featured-header": featured, "article-header": !featured }]}>
-                  <div class="category component">
-                    <div class="component-content">
-                      <div class="category-eyebrow">
-                        <span class="category-eyebrow__category category_original">{type}</span>
-                        <span class="category-eyebrow__date">{dateFormated}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="pagetitle component">
-                    <div class="component-content">
-                      <h1 class="hero-headline">{title}</h1>
-                    </div>
-                  </div>
-                  <div class: list={[{ "featured-subhead": featured, "article-subhead": !featured }, "component"]}>
-                    <div class="component-content">{description}</div>
-                  </div>
 
-                  <div class: list={["tagssheet component"]}>
-                    <div class="component-content">
-                      {
-                        frontmatter.tags.map((tag) => {
-                          return (
-                            <a href={`/tags/${tag}`} class="tag">
-                              {tag}
-                            </a>
-                          );
-                        })
-                      }
-                    </div>
-                  </div>
-                </div>
-                {/* <slot /> */}
-                <div v-html={mdTxtHtml}> </div>
-                <div class="component">
+
+        <main id="main" class="main">
+          <section>
+            <article class="article">
+              <div class: list={[{ "featured-header": featured, "article-header": !featured }]}>
+                <div class="category component">
                   <div class="component-content">
-                    <div class="article-copyright">
-                      <a class="content" href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank"
-                      >版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</a
-                      >
-                      <p class="content">作者： {frontmatter.author} 发表日期：{dateFormated}</p>
+                    <div class="category-eyebrow">
+                      <span class="category-eyebrow__category category_original">{type}</span>
+                      <span class="category-eyebrow__date">{dateFormated}</span>
                     </div>
                   </div>
                 </div>
-              </article>
-            </section>
-          </main>
+                <div class="pagetitle component">
+                  <div class="component-content">
+                    <h1 class="hero-headline">{title}</h1>
+                  </div>
+                </div>
+                <div class: list={[{ "featured-subhead": featured, "article-subhead": !featured }, "component"]}>
+                  <div class="component-content">{description}</div>
+                </div>
+
+                <div class: list={["tagssheet component"]}>
+                  <div class="component-content">
+                    {
+                      frontmatter.tags.map((tag) => {
+                        return (
+                          <a href={`/tags/${tag}`} class="tag">
+                            {tag}
+                          </a>
+                        );
+                      })
+                    }
+                  </div>
+                </div>
+              </div>
+              {/* <slot /> */}
+              <div v-html={mdTxtHtml}> </div>
+              <div class="component">
+                <div class="component-content">
+                  <div class="article-copyright">
+                    <a class="content" href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank"
+                    >版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</a
+                    >
+                    <p class="content">作者： {frontmatter.author} 发表日期：{dateFormated}</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+        </main>
 
 
 
 
-        </body>
+
 
 
 
