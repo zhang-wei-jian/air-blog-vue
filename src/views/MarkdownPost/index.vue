@@ -1,10 +1,10 @@
 <template>
-  <TTempalte></TTempalte>
+  <TemplateComponent></TemplateComponent>
 </template>
 
 <script lang="ts" setup>
 
-import TTempalte from './template'
+import TemplateComponent from './template'
 import mockAxios from '../../axios/mockAxios'
 
 import { ref } from 'vue'
@@ -37,7 +37,6 @@ const clickHandle = async () => {
 </script>
 
 <style scope>
-
 </style>
 
 

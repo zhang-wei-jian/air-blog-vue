@@ -14,11 +14,11 @@ const sb = import('@/views/index.vue')
 // 每个路由都需要映射到一个组件。
 // 我们后面再讨论嵌套路由。
 const routes = [
-  { path: '/', component: sb },
-  { path: '/About', component: About },
-  { path: '/Archive', component: Archive },
-  { path: '/MarkdownPost', component: MarkdownPost },
-  { path: '/1', component: MarkdownPost },
+  { path: '/', component: () => sb },
+  { path: '/About', component: () => About },
+  { path: '/Archive', component: () => Archive },
+  { path: '/MarkdownPost', component: () => MarkdownPost },
+  { path: '/1', component: () => MarkdownPost },
 
 
 ]

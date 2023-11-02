@@ -1,5 +1,5 @@
 import { defineComponent, ref, toRefs, onMounted } from 'vue';
-import "/static/js/test"
+
 
 import txt from "./json";
 // import "/static/js/initPost.js"
@@ -26,7 +26,11 @@ export default defineComponent({
 
 
     onMounted(async () => {
-      const module = await import('/static/js/initPost.js');
+      // const module = await import('/static/js/initPost.js');
+      var script = document.createElement("script");
+      script.src = "/static/js/initPost.js";
+      document.head.appendChild(script);
+
     })
 
     let md = new MarkdownIt();
@@ -34,6 +38,7 @@ export default defineComponent({
 
 
 
+    // markdown转html再次处理插件
     function pipeline() {
       return [
 
@@ -225,15 +230,16 @@ export default defineComponent({
         title: 'Golang net/http & HTTP Serve 源码分析',
         pubDate: '2035-06-01',
         description: '很多Go web框架都通过封装 net/http 来实现核心功能，因此学习 net/http 是研究 Gin等框架的基础。',
-        author: 'Austin',
+        author: '作者是我',
+        tags: ["源码", "标准库", "golang", "gin"],
+        theme: 'light',
+        featured: true,
         cover: {
           url: 'https://pic.lookcos.cn/i/usr/uploads/2022/04/2067928922.png',
           square: 'https://pic.lookcos.cn/i/usr/uploads/2022/04/2067928922.png',
           alt: 'cover'
         },
-        tags: ["源码研究", "标准库", "golang", "gin"],
-        theme: 'light',
-        featured: false
+
       }
     }
 
@@ -253,7 +259,7 @@ export default defineComponent({
         <main id="main" class="main">
           <section>
             <article class="article">
-              <div class: list={[{ "featured-header": featured, "article-header": !featured }]}>
+              <div class={{ "featured-header": featured, "article-header": !featured }}>
                 <div class="category component">
                   <div class="component-content">
                     <div class="category-eyebrow">
@@ -267,11 +273,11 @@ export default defineComponent({
                     <h1 class="hero-headline">{title}</h1>
                   </div>
                 </div>
-                <div class: list={[{ "featured-subhead": featured, "article-subhead": !featured }, "component"]}>
+                <div class={{ "featured-subhead": featured, "article-subhead": !featured, "component": true }}>
                   <div class="component-content">{description}</div>
                 </div>
 
-                <div class: list={["tagssheet component"]}>
+                <div class={["tagssheet component"]}>
                   <div class="component-content">
                     {
                       frontmatter.tags.map((tag) => {
@@ -299,7 +305,7 @@ export default defineComponent({
               </div>
             </article>
           </section>
-        </main>
+        </main >
 
 
 

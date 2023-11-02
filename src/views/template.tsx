@@ -1,7 +1,7 @@
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 import Title from "./Title/index.vue";
 import MoreTile from "./MoreTile/index.vue";
-import "/static/js/animation.js"
+// import "/static/js/animation.js"
 export default defineComponent({
   name: 'MyComponent',
   // props: {
@@ -10,53 +10,53 @@ export default defineComponent({
   setup(props) {
 
 
-
+    onMounted(() => {
+      // import("/static/js/animation.js")
+    })
 
     // when layout is loaded, load the images
+    function getRandomNumber(min, max) {
+      // 通过 Math.random() 生成一个 0 到 1 之间的随机小数
+      // 将其乘以 (max - min) 得到一个在范围内的随机数
+      // 再加上 min 得到最终的随机数
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
 
-
-    const allPosts = ref([1, 2, 3, 4, 5, 6].map((item, index) => {
-      if (index == 0) {
-
-        return {
-          // frontmatter 是一个对象，里面通常包含文章的各种元数据
-          frontmatter: {
-            // title，表示文章的标题
-            title: "Apple 推出新款 HomePod，带来突破性音质与智能体验 ",
-            // pubDate，表示文章的发布日期
-            pubDate: "2022-12-08T14:30:00",
-            // tags，表示与文章关联的标签数组
-            tags: ["A分类", "B分类"],
-            // cover 是一个对象，里面包含了文章封面图片的各种信息
-            cover: {
-              // url，表示封面图片的链接地址
-              url: "https://www.apple.com.cn/newsroom/images/product/homepod/standard/Apple-HomePod-hero-230118_big.jpg.large_2x.jpg",
-              // square，表示封面图片的方形版本链接地址。这是可选参数，可能并不存在
-              square: "",
-              alt: 'cover'//
-            }
+    const allPosts = ref([1, 2, 3, 4, 5, 6, 7, 213, 2, 14, 1, 43, 2, 213, 21, 3, 213, 21, 4, 43, 24, 32, 2].map((item, index) => {
+      const sectionItem = {
+        frontmatter: {
+          title: 'Golang net/http & HTTP Serve 源码分析',
+          pubDate: '2035-06-01',
+          description: '很多Go web框架都通过封装 net/http 来实现核心功能，因此学习 net/http 是研究 Gin等框架的基础。',
+          author: '作者是我',
+          tags: ["源码", "标准库", "golang", "gin"],
+          theme: 'light',
+          featured: true,
+          cover: {
+            url: 'https://pic.lookcos.cn/i/usr/uploads/2022/04/2067928922.png',
+            square: '',
+            alt: 'cover'
           },
-          // url，表示指向这篇文章的链接地址
-          url: "/1",
-          author: 'Austin',//
-          description: 'des',//
-          theme: 'light',//
-          featured: false//
-        }
-      } else {
-        return {
-          frontmatter: {
-            title: "Apple 推出新款 HomePod，带来突破性音质与智能体验 ",
-            pubDate: "2022-01-01",
-            tags: ["Vue", "react"],
-            cover: {
-              url: "https://cdn2.unrealengine.com/unreal-engine-5-1-features-for-fortnite-chapter-4-header-1920x1080-2e96869442d6.jpg?resize=1&w=1920.jpg",
-              square: "",
-            }
-          },
-          url: "",
+
         }
       }
+
+      const resRandom = getRandomNumber(1, 2)
+
+      if (resRandom == 0) {
+        sectionItem.frontmatter.cover.url = "https://www.apple.com.cn/newsroom/images/product/homepod/standard/Apple-HomePod-hero-230118_big.jpg.large_2x.jpg"
+
+      } else if (resRandom == 1) {
+        sectionItem.frontmatter.cover.url = "https://cdn.seovx.com/ha/?mom=302&timestamp=" + index
+
+
+      } else if (resRandom == 2) {
+        sectionItem.frontmatter.cover.url = "https://cdn.seovx.com/?mom=302&timestamp=" + index
+      }
+
+
+      return sectionItem
+
     }));
 
     // allPosts.value.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate));
@@ -80,7 +80,7 @@ export default defineComponent({
                   return (
                     <Title
                       title={post.frontmatter.title}
-                      href={post.url}
+                      href={"/1"}
                       date={post.frontmatter.pubDate}
                       tags={post.frontmatter.tags}
                       cover={post.frontmatter.cover.url}

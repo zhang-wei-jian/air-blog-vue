@@ -1,8 +1,7 @@
 
 
 <template>
-
-<header>
+  <header>
     <nav class="nav">
       <div class="nav-wrapper">
         <div class="nav-content-wrapper">
@@ -35,10 +34,11 @@
   <!-- <hello-world msg="Vite + Vue" /> -->
   <!-- <Antx6></Antx6> -->
   <!-- <LoginToken></LoginToken> -->
+
+
+
+
   <router-view></router-view>
-
-
-
 
 
 
@@ -94,7 +94,7 @@ import HelloWorld from './components/HelloWorld.vue'
 // import Antx6 from './components/antx6.vue'
 import LoginToken from "./components/LoginTest/index.vue"
 import { useRoute } from 'vue-router';
-import { watch } from 'vue';
+import { watch, ref } from 'vue';
 const route = useRoute();
 
 watch(route, async (to, from) => {
@@ -102,6 +102,8 @@ watch(route, async (to, from) => {
   console.log("aaaaaa");
 
 });
+
+
 </script>
 
 <style scoped>
