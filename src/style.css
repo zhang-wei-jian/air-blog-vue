@@ -448,7 +448,27 @@ a.nav-title:hover {
 
 
 .nav-item-wrapper a:hover {
-  color: #2997ff;
+
+  cursor: pointer;
+  transition: 0.2s;
+  /* transition-duration: 1s; */
+  /* transform: scale(1.2); */
+  /* transition-timing-function: ease-in-out; */
+
+  /* color: #2997ff; */
+  color: #4a5e4a;
+}
+
+.nav-item-content :hover {
+
+  cursor: pointer;
+  transition: 0.2s;
+  /* transition-duration: 1s; */
+  /* transform: scale(1.2); */
+  /* transition-timing-function: ease-in-out; */
+
+  /* color: #2997ff; */
+  color: #576157;
 }
 
 .main {
@@ -6328,8 +6348,57 @@ html.no-touch.no-reduced-motion .tile.tile-list[data-focus-method=key] .media--v
 .theme-dark h5,
 .theme-dark h6 {
   color: #f5f5f7
+    /* color: #000000 */
 }
 
+/* 针对主页 */
+.theme-dark .home h1,
+.theme-dark .home h2,
+.theme-dark .home h3,
+.theme-dark .home h4,
+.theme-dark .home h5,
+.theme-dark .home h6 {
+  /* color: #f5f5f7 */
+  color: #000000
+}
+
+
+.home .cta-primary-light {
+  letter-spacing: 0em;
+  border-radius: 30px;
+  display: inline-block;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.25, 1) 0ms, border-color 300ms cubic-bezier(0.4, 0, 0.25, 1) 0ms, color 300ms cubic-bezier(0.4, 0, 0.25, 1) 0ms;
+  font-size: 17px;
+  line-height: 1.23536;
+  font-weight: 600;
+  letter-spacing: -.022em;
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  border: 2px solid;
+  padding: 10px 24px 9px;
+  border-color: #1d1d1f;
+
+
+
+  background: #f5f5f7;
+  color: #161617;
+  /* color: #f5f5f7 */
+}
+
+.home .cta-primary-light:hover {
+  background: #1d1d1f;
+  border-color: #1d1d1f;
+  color: #f5f5f7;
+  /* color: #161617; */
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+/* 针对主页 */
 .theme-dark a,
 .theme-dark .link {
   color: #f5f5f7;

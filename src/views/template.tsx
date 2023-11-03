@@ -37,7 +37,6 @@ export default defineComponent({
             square: '',
             alt: 'cover'
           },
-
         }
       }
 
@@ -141,7 +140,8 @@ export default defineComponent({
               }
             </ul>
             <div class="view-archive-wrapper">
-              <a href="/archive" class="cta-primary-light" data-analytics-region="router" data-analytics-title="view archive">阅读历史文章</a>
+              {/* <a href="/archive" class="cta-primary-light" data-analytics-region="router" data-analytics-title="view archive">阅读历史文章</a> */}
+              <router-Link to="/archive" class="cta-primary-light" data-analytics-region="router" data-analytics-title="view archive">阅读历史文章</router-Link>
             </div>
           </div>
         </section>

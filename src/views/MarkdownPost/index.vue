@@ -1,5 +1,7 @@
 <template>
-  <TemplateComponent></TemplateComponent>
+  <div>
+    <TemplateComponent></TemplateComponent>
+  </div>
 </template>
 
 <script lang="ts" setup>
