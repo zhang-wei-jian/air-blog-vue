@@ -6,17 +6,31 @@
       <div class="nav-wrapper">
         <div class="nav-content-wrapper">
           <div class="nav-content">
-            <a href="/" class="nav-title">{"Apple Blog"}</a>
+            <!-- <a href="/" class="nav-title">{"Apple Blog"}</a> -->
+            <router-Link to="/" class="nav-title">{"Apple Blog"}</router-Link>
             <div class="nav-menu">
-              <div class="nav-item-wrapper">
-                <a href="/archive" class="nav-item-content">目录</a>
-              </div>
-              <div class="nav-item-wrapper">
-                <a href="/about" class="nav-item-content">关于</a>
-              </div>
-              <div class="nav-item-wrapper">
-                <a href="/rss.xml" class="nav-item-content" target="_blank">RSS</a>
-              </div>
+
+              <!-- <a href="/archive" class="nav-item-content">目录</a> -->
+              <router-Link to="/archive" class="nav-item-content">
+                <div class="nav-item-wrapper">
+                  目录</div>
+              </router-Link>
+
+
+              <!-- <a href="/about" class="nav-item-content">关于</a> -->
+              <router-Link to="/about" class="nav-item-content">
+
+                <div class="nav-item-wrapper">关于 </div>
+              </router-Link>
+
+
+              <router-Link to="/" class="nav-item-content">
+
+                <div class="nav-item-wrapper">
+                  RSS </div>
+              </router-Link>
+              <!-- <a href="/rss.xml" class="nav-item-content" target="_blank">RSS</a> -->
+
             </div>
           </div>
         </div>
@@ -38,9 +52,15 @@
 
 
 
-  <router-view></router-view>
+
+  <router-view v-slot="{ Component }"> </router-view>
 
 
+  <!-- <router-view v-slot="{ Component }">
+    <transition name="fade">
+      <component :is="Component" />
+    </transition>
+  </router-view> -->
 
 
   <div class="footer-main">
@@ -50,26 +70,29 @@
           <div class="foot-nav-items">
             <div class="item">
               <div class="logo">{SITE_TITLE}</div>
-              <div class="email">Email: {SITE_EMAIL}</div>
+              <!-- <div class="email">Email: {SITE_EMAIL}</div> -->
+              <div class="email">Email: 34937436@QQ.com</div>
             </div>
 
             <div class="item products">
               <div class="item-title">作品</div>
               <a href="/" target="_blank">本站博客</a>
-              <a href="https://the.top" target="_blank">TOP Link</a>
+              <!-- <a href="https://the.top" target="_blank">TOP Link</a> -->
             </div>
 
             <div class="item community">
               <div class="item-title">社媒</div>
-              <a href="https://twitter.com/austinit" target="_blank">Twitter</a>
-              <a href="https://github.com/austin2035" target="_blank">Github</a>
-              <a href="https://t.me/austin2035" target="_blank">Telegram</a>
+              <!-- <a href="https://twitter.com/austinit" target="_blank">Twitter</a> -->
+              <a href="https://github.com/zhang-wei-jian" target="_blank">Github</a>
+              <!-- <a href="https://t.me/austin2035" target="_blank">Telegram</a> -->
             </div>
 
             <div class="item resources">
-              <div class="item-title">友链</div>
-              <a href="https://the.top" target="_blank">THE.TOP</a>
-              <a href="https://yufengbiji.com" target="_blank">驭风笔记</a>
+              <div class="item-title">赞助商</div>
+              <a href="https://twitter.com/elonmusk" target="_blank">Elon Musk</a>
+              <a href="https://twitter.com/spaceX" target="_blank">SpaceX</a>
+              <a href="https://twitter.com/Tesla" target="_blank">Tesla</a>
+              <!-- <a href="https://yufengbiji.com" target="_blank">驭风笔记</a> -->
             </div>
 
           </div>
@@ -107,4 +130,13 @@ watch(route, async (to, from) => {
 </script>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

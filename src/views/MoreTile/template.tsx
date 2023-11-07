@@ -24,8 +24,8 @@ export default defineComponent({
         class="tile-item item-list nr-scroll-animation"
         style="--nr-animation-transform-y:20%;"
       >
-        <a
-          href={href}
+        <router-Link
+          to={'/detail'}
           class="tile tile-list medium-load small-load large-load"
           aria-label={label}
         >
@@ -41,7 +41,7 @@ export default defineComponent({
             </div>
             <div class="tile__timestamp icon-hide icon icon-before icon-clock">{dateFormated}</div>
           </div>
-        </a>
+        </router-Link>
       </li>
     )
   }

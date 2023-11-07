@@ -38,8 +38,8 @@ export default defineComponent({
         class={["tile-item", "nr-scroll-animation", { "item-hero": level === "1", "item-2up": level === "2", "item-3up": level === "3" }]}
         style="--nr-animation-transform-y:20%;"
       >
-        <a
-          href={href}
+        <router-Link
+          to={'/detail'}
           class={["tile", "large-load", "medium-load", "small-load", { "tile-hero": level === "1", "tile-2up": level === "2", "tile-3up": level === "3" }]}
           aria-label={label}
         >
@@ -54,7 +54,7 @@ export default defineComponent({
             </div>
             <div class="tile__timestamp icon-hide icon icon-before icon-clock">{dateFormated}</div>
           </div>
-        </a>
+        </router-Link>
       </li>
 
 
