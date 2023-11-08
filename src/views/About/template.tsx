@@ -18,7 +18,7 @@ export default defineComponent({
     // tags={post.frontmatter.tags}
     // cover={post.frontmatter.cover.url}
     // level="2"
-    console.log(attrs, "attrsattrsattrsattrsattrs");
+    // console.log(attrs, "attrsattrsattrsattrsattrs");
 
     return () => (
 

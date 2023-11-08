@@ -23,7 +23,8 @@ export default defineConfig({
       '/port': {
         // target: 'http://down.ddrj.com:88',
         // target: 'https://quwenai.com',
-        target: 'http://localhost:8080',
+        // target: 'https://openchat.team',
+        target: 'http://127.0.0.1:8080',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/port/, '') // 不可以省略rewrite
       }
@@ -36,7 +37,7 @@ export default defineConfig({
     },
   },
   // vueTemplateCompiler: true,
-  plugins: [vue(),vueJsx()],
+  plugins: [vue(), vueJsx()],
 
 
 

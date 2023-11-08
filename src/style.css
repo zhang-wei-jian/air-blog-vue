@@ -6351,12 +6351,17 @@ html.no-touch.no-reduced-motion .tile.tile-list[data-focus-method=key] .media--v
     /* color: #000000 */
 }
 
-/* 针对主页 */
+/* 针对黑主题文本，变回黑色字体 */
 .theme-dark .home h1,
 .theme-dark .home h2,
 .theme-dark .home h3,
 .theme-dark .home h4,
 .theme-dark .home h5,
+.theme-dark .home ul,
+.theme-dark .home li,
+.theme-dark .home a,
+.theme-dark .home span,
+.theme-dark .home div,
 .theme-dark .home h6 {
   /* color: #f5f5f7 */
   color: #000000

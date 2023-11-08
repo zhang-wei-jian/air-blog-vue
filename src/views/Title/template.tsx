@@ -1,7 +1,7 @@
 import { defineComponent, ref, toRefs } from 'vue';
 
 export default defineComponent({
-  name: 'MyComponent',
+  name: 'Title',
   props: {
     msg: String
   },
@@ -14,6 +14,7 @@ export default defineComponent({
     // const title = ref('Apple 推出新款 HomePod，带来突破性音质与智能体验') // 假设title为'This is a title'
     // const dateFormated = ref('2022-01-01') // 假设dateFormated为'2022-01-01'
 
+    // console.log(attrs, "attrsattrsattrs");
 
 
     const dateFormated = '日记越类';
@@ -29,7 +30,7 @@ export default defineComponent({
     // tags={post.frontmatter.tags}
     // cover={post.frontmatter.cover.url}
     // level="2"
-    console.log(attrs, "attrsattrsattrsattrsattrs");
+    // console.log(attrs, "attrsattrsattrsattrsattrs");
 
     return () => (
 

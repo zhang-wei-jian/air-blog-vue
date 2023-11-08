@@ -1,19 +1,58 @@
 <template>
-  <div class="home">
-    <TemplateComponent></TemplateComponent>
+  <div>
+    <div>
+
+      <h1>
+        children
+      </h1>
+      {{ sum }}
+      <!-- {{ props.sum }} -->
+      <el-button @click="SubmitHandle">children</el-button>
+
+
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref, useAttrs, toRefs } from 'vue'
 
 import TemplateComponent from './template'
-import mockAxios from '../../axios/mockAxios'
+import { postChat } from '@/api/chat.js'
+import axuis from 'axios'
+import { ElMessage } from 'element-plus'
 
-import { ref } from 'vue'
-import { genFileId } from 'element-plus'
 import type { UploadInstance, UploadProps, UploadRawFile } from 'element-plus'
 
 const upload = ref<UploadInstance>()
+const attrs = useAttrs()
+// const props = defineProps()
+
+const props = defineProps(["sum"])
+
+const { sum } = toRefs(props)
+// let { sum } = ref(props.sum)
+// const { sum } = props
+// console.log(attrs, "attrs");
+// console.log(props, "propsS");
+const SubmitHandle = async () => {
+  // console.log(await axuis.get("/getData"));
+
+  console.log(sum);
+
+  sum.value++
+  console.log(sum);
+
+  // const res = await postChat()
+  // console.log(res);
+  // ElMessage.success(res)
+}
+
+
+
+
+
+
 
 const handleExceed: UploadProps['onExceed'] = (files) => {
   upload.value!.clearFiles()

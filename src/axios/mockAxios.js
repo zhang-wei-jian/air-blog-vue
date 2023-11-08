@@ -4,7 +4,7 @@ import "nprogress/nprogress.css"
 const instance = axios.create({
   // baseURL: 'http://120.24.61.37:9501/',
   // baseURL: '/api',
-  baseURL: '/port',
+  // baseURL: '/port',
   headers: {
 
 

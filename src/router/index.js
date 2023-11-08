@@ -23,6 +23,7 @@ const routes = [
   { path: '/MarkdownPost', component: () => MarkdownPost },
   { path: '/1', component: () => MarkdownPost },
   { path: '/detail', component: () => MarkdownPost },
+  { path: '/chat', component: () => import('@/views/Chat/index.vue') },
 
 
 ]

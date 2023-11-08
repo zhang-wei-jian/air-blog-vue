@@ -118,14 +118,19 @@ import HelloWorld from './components/HelloWorld.vue'
 import LoginToken from "./components/LoginTest/index.vue"
 import { useRoute } from 'vue-router';
 import { watch, ref } from 'vue';
+import { getCatlog } from '@/api/catlog.js'
 const route = useRoute();
 
 watch(route, async (to, from) => {
   // 发起请求获取黑暗模式状态，或者你也可以在路由上带上参数或者在其他地方存储状态
-  console.log("aaaaaa");
+
 
 });
 
+const get = () => {
+  getCatlog()
+}
+// get()
 
 </script>
 

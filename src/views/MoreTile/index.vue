@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <TemplateComponent v-bind="attrs"></TemplateComponent>
-  </div>
+  <TemplateComponent v-bind="attrs"></TemplateComponent>
 </template>
 
 <script lang="ts" setup>
@@ -17,8 +15,8 @@ const upload = ref<UploadInstance>()
 const attrs = useAttrs()
 const props = defineProps()
 
-console.log(attrs, "attrs");
-console.log(props, "propsS");
+// console.log(attrs, "attrs");
+// console.log(props, "propsS");
 
 
 
@@ -33,9 +31,7 @@ const handleExceed: UploadProps['onExceed'] = (files) => {
   upload.value!.handleStart(file)
 }
 
-// const submitUpload = () => {
-//   upload.value!.submit()
-// }
+
 
 
 const clickHandle = async () => {
