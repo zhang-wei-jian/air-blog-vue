@@ -1,8 +1,10 @@
 <template>
   <div class="home">
+    <div class="home">
     <TemplateComponent :dataList="dataList" :allPosts="dataList"></TemplateComponent>
 
     <!-- {{ dataList }} -->
+  </div>
   </div>
 </template>
 
