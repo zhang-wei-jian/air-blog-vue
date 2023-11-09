@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <div class="home">
-    <TemplateComponent :dataList="dataList" :allPosts="dataList"></TemplateComponent>
+      <TemplateComponent :dataList="dataList" :allPosts="dataList"></TemplateComponent>
 
-    <!-- {{ dataList }} -->
-  </div>
+      <!-- {{ dataList }} -->
+    </div>
   </div>
 </template>
 
@@ -35,6 +35,7 @@ const dataList = ref([
         "gin"
       ],
       "theme": "light",
+      "content": "",
       "featured": true,
       "cover": {
         // "url": "https://pic.lookcos.cn/i/usr/uploads/2022/04/2067928922.png",

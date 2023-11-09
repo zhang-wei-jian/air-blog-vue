@@ -19,7 +19,25 @@ import { getCatlogId } from '@/api/catlog.js'
 
 
 const route = useRoute()
-const catlogItem = ref()
+const catlogItem = ref({
+  "id": 21,
+  "title": "",
+  "pubDate": "",
+  "description": "",
+  "author": "",
+
+  "tags": [
+
+  ],
+  "theme": "",
+  "featured": true,
+  "cover": {
+
+    "square": "",
+    "alt": ""
+  },
+  "content": "",
+})
 
 // 获取idDetail
 const getId = async () => {

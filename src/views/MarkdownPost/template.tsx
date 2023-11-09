@@ -1,4 +1,4 @@
-import { defineComponent, ref, toRefs, onMounted, nextTick } from 'vue';
+import { defineComponent, watch, ref, toRefs, onMounted, reactive, nextTick } from 'vue';
 
 
 import txt from "./json";
@@ -13,6 +13,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeFormat from 'rehype-format';
 import rehypeStringify from 'rehype-stringify';
+
 
 
 
@@ -211,8 +212,40 @@ export default defineComponent({
     }
 
 
+
+
+    const pubDate = ref("")
+    const title = ref("")
+    const description = ref("")
+    const featured = ref("")
+    const author = ref("")
+    const tags = ref([])
+    const content = ref("")
+
     const { catlogItem } = toRefs(props)
-    const { pubDate, title, description, featured, author, tags, content } = catlogItem.value
+    // const { pubDate, title, description, featured, author, tags, content } = reactive(catlogItem.value)
+
+    watch(catlogItem, (val) => {
+      console.log("watch")
+      if (val) {
+        pubDate.value = val.pubDate
+        title.value = val.title
+        description.value = val.description
+        featured.value = val.featured
+        author.value = val.author
+        tags.value = val.tags
+        content.value = val.content
+        convertMarkdownToHtml(content.value)
+        var script = document.createElement("script");
+        script.src = "/static/js/initPost.js";
+        document.head.appendChild(script);
+
+      }
+    })
+
+    // 使用解构赋值并保持响应式
+    // const { pubDate, title, description, featured, author, tags, content } = toRefs(catlogItem.value)
+
     const type = tags[0]
     console.log(title, "titletitle");
     console.log(catlogItem, "propsprops");
@@ -220,28 +253,8 @@ export default defineComponent({
     convertMarkdownToHtml(content)
 
 
-    // var props = {
 
-    //   frontmatter: {
-    //     title: 'Golang net/http & HTTP Serve 源码分析',
-    //     pubDate: '2035-06-01',
-    //     description: '很多Go web框架都通过封装 net/http 来实现核心功能，因此学习 net/http 是研究 Gin等框架的基础。',
-    //     author: '作者是我',
-    //     tags: ["源码", "标准库", "golang", "gin"],
-    //     theme: 'light',
-    //     featured: true,
-    //     cover: {
-    //       url: 'https://pic.lookcos.cn/i/usr/uploads/2022/04/2067928922.png',
-    //       square: 'https://pic.lookcos.cn/i/usr/uploads/2022/04/2067928922.png',
-    //       alt: 'cover'
-    //     },
 
-    //   }
-    // }
-
-    // const { frontmatter } = props
-    // const type = frontmatter.tags[0]
-    // const { pubDate, title, description, featured } = frontmatter
     const dateFormated = '时间叫回来我们很多东西'
     const SITE_LANG = "zh-CN";
 
@@ -255,7 +268,7 @@ export default defineComponent({
         <main id="main" class="main">
           <section>
             <article class="article">
-              <div class={{ "featured-header": featured, "article-header": !featured }}>
+              <div class={{ "featured-header": featured, "article-header": !featured.value }}>
                 <div class="category component">
                   <div class="component-content">
                     <div class="category-eyebrow">
@@ -266,17 +279,17 @@ export default defineComponent({
                 </div>
                 <div class="pagetitle component">
                   <div class="component-content">
-                    <h1 class="hero-headline">{title}</h1>
+                    <h1 class="hero-headline">{title.value}</h1>
                   </div>
                 </div>
-                <div class={{ "featured-subhead": featured, "article-subhead": !featured, "component": true }}>
-                  <div class="component-content">{description}</div>
+                <div class={{ "featured-subhead": featured.value, "article-subhead": !featured.value, "component": true }}>
+                  <div class="component-content">{description.value}</div>
                 </div>
 
                 <div class={["tagssheet component"]}>
                   <div class="component-content">
                     {
-                      tags.map((tag) => {
+                      tags.value.map((tag) => {
                         return (
                           <a href={`/tags/${tag}`} class="tag">
                             {tag}
@@ -295,7 +308,7 @@ export default defineComponent({
                     <a class="content" href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank"
                     >版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</a
                     >
-                    <p class="content">作者： {author} 发表日期：{dateFormated}</p>
+                    <p class="content">作者： {author.value} 发表日期：{dateFormated}</p>
                   </div>
                 </div>
               </div>
