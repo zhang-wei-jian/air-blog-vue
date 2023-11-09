@@ -12,7 +12,7 @@
 import mockAxios from '../axios/mockAxios'
 // import Title from './Title/index.vue'
 import TemplateComponent from './template'
-
+import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
 import { genFileId } from 'element-plus'
 import { getCatlog } from '@/api/catlog.js'
@@ -35,7 +35,7 @@ const dataList = ref([
       "theme": "light",
       "featured": true,
       "cover": {
-        "url": "https://pic.lookcos.cn/i/usr/uploads/2022/04/2067928922.png",
+        // "url": "https://pic.lookcos.cn/i/usr/uploads/2022/04/2067928922.png",
         // "url": "",
         "square": "",
         "alt": "cover"
@@ -47,24 +47,28 @@ const dataList = ref([
 
 
 const get = async () => {
-
   console.log(dataList.value, "  dataList.value   dataList.value ");
-  const res = await getCatlog()
-
-  console.log(res, "res");
-
-  dataList.value = res.map((item, index) => {
-    // frontmatter.cover.url = "https://cdn.seovx.com/ha/?mom=302&timestamp=" + index
-    const dataItem = {
-      frontmatter: {
-        ...item
+  try {
+    const res = await getCatlog()
+    dataList.value = res.map((item, index) => {
+      // frontmatter.cover.url = "https://cdn.seovx.com/ha/?mom=302&timestamp=" + index
+      const dataItem = {
+        frontmatter: {
+          ...item
+        }
       }
-    }
-    dataItem.frontmatter.cover.url = dataItem.frontmatter.cover.url ? dataItem.frontmatter.cover.url : "https://cdn.seovx.com/ha/?mom=302&timestamp=" + index
-    return dataItem
-  })
+      dataItem.frontmatter.cover.url = dataItem.frontmatter.cover.url ? dataItem.frontmatter.cover.url : "https://cdn.seovx.com/ha/?mom=302&timestamp=" + index
+      return dataItem
+    })
+  } catch (error) {
+    ElMessage.error(error)
+  }
 
-  console.log(dataList.value, "  dataList.value   dataList.value ");
+
+
+
+
+
 
 
 }

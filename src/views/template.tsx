@@ -100,6 +100,7 @@ export default defineComponent({
                       tags={post.frontmatter.tags}
                       cover={post.frontmatter.cover.url}
                       level="1"
+                      id={post.frontmatter.id}
                       key={post.frontmatter.id}
                     />
                   );
@@ -116,6 +117,7 @@ export default defineComponent({
                       tags={post.frontmatter.tags}
                       cover={post.frontmatter.cover.url}
                       level="2"
+                      id={post.frontmatter.id}
                       key={post.frontmatter.id}
                     />
                   );
@@ -132,6 +134,7 @@ export default defineComponent({
                       tags={post.frontmatter.tags}
                       cover={post.frontmatter.cover.url}
                       level="3"
+                      id={post.frontmatter.id}
                       key={post.frontmatter.id}
                     />
                   );
@@ -153,6 +156,7 @@ export default defineComponent({
                       href={post.url} date={post.frontmatter.pubDate}
                       tags={post.frontmatter.tags}
                       cover={post.frontmatter.cover.square !== "" ? post.frontmatter.cover.square : post.frontmatter.cover.url}
+                      id={post.frontmatter.id}
                       key={post.frontmatter.id}
                     />
                   );

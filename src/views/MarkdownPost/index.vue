@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TemplateComponent></TemplateComponent>
+    <TemplateComponent :catlogItem="catlogItem"></TemplateComponent>
   </div>
 </template>
 
@@ -9,24 +9,32 @@
 import TemplateComponent from './template'
 import mockAxios from '../../axios/mockAxios'
 
-import { ref } from 'vue'
-import { genFileId } from 'element-plus'
-import type { UploadInstance, UploadProps, UploadRawFile } from 'element-plus'
+import { nextTick, ref } from 'vue'
+import { ElMessage, genFileId } from 'element-plus'
+import { useRoute } from 'vue-router'
 
-const upload = ref<UploadInstance>()
+import { getCatlogId } from '@/api/catlog.js'
 
-const handleExceed: UploadProps['onExceed'] = (files) => {
-  upload.value!.clearFiles()
-  const file = files[0] as UploadRawFile
-  file.uid = genFileId()
-  upload.value!.handleStart(file)
+
+
+
+const route = useRoute()
+const catlogItem = ref()
+
+// 获取idDetail
+const getId = async () => {
+  const id = route.query.id
+  if (!id) return
+  try {
+    const res = await getCatlogId(id)
+    catlogItem.value = res
+  } catch (error) {
+    ElMessage.error(error)
+  }
+
 }
 
-// const submitUpload = () => {
-//   upload.value!.submit()
-// }
-
-
+getId()
 
 
 

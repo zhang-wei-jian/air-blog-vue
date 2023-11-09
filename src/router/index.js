@@ -20,7 +20,7 @@ const routes = [
   { path: '/', component: Home },
   { path: '/About', component: () => About },
   { path: '/Archive', component: () => Archive },
-  { path: '/MarkdownPost', component: () => MarkdownPost },
+  { path: '/MarkdownPost', component: () => MarkdownPost ,name:"catlogDetail"},
   { path: '/1', component: () => MarkdownPost },
   { path: '/detail', component: () => MarkdownPost },
   { path: '/chat', component: () => import('@/views/Chat/index.vue') },

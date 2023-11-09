@@ -1,4 +1,4 @@
-import { defineComponent, ref, toRefs, onMounted } from 'vue';
+import { defineComponent, ref, toRefs, onMounted, nextTick } from 'vue';
 
 
 import txt from "./json";
@@ -19,10 +19,8 @@ import rehypeStringify from 'rehype-stringify';
 
 export default defineComponent({
   name: 'MarkdownPost',
-  props: {
-
-  },
-  setup(pp, { attrs }) {
+  props: ["catlogItem"],
+  setup(props, { attrs }) {
 
 
     onMounted(async () => {
@@ -196,7 +194,7 @@ export default defineComponent({
       ]
     }
 
-    const convertMarkdownToHtml = () => {
+    const convertMarkdownToHtml = (content) => {
 
       unified()
         .use(remarkParse)
@@ -204,48 +202,46 @@ export default defineComponent({
         .use(pipeline())  // 这里调用你的函数作为插件
 
         .use(rehypeStringify)
-        .process(txt, (err, file) => {
+        .process(content, (err, file) => {
           if (err) throw err;
           mdTxtHtml = String(file)
-          console.log(String(file));
+          // console.log(String(file));
 
         });
     }
 
-    convertMarkdownToHtml()
+
+    const { catlogItem } = toRefs(props)
+    const { pubDate, title, description, featured, author, tags, content } = catlogItem.value
+    const type = tags[0]
+    console.log(title, "titletitle");
+    console.log(catlogItem, "propsprops");
+
+    convertMarkdownToHtml(content)
 
 
+    // var props = {
 
+    //   frontmatter: {
+    //     title: 'Golang net/http & HTTP Serve 源码分析',
+    //     pubDate: '2035-06-01',
+    //     description: '很多Go web框架都通过封装 net/http 来实现核心功能，因此学习 net/http 是研究 Gin等框架的基础。',
+    //     author: '作者是我',
+    //     tags: ["源码", "标准库", "golang", "gin"],
+    //     theme: 'light',
+    //     featured: true,
+    //     cover: {
+    //       url: 'https://pic.lookcos.cn/i/usr/uploads/2022/04/2067928922.png',
+    //       square: 'https://pic.lookcos.cn/i/usr/uploads/2022/04/2067928922.png',
+    //       alt: 'cover'
+    //     },
 
+    //   }
+    // }
 
-
-
-
-
-
-
-    var props = {
-
-      frontmatter: {
-        title: 'Golang net/http & HTTP Serve 源码分析',
-        pubDate: '2035-06-01',
-        description: '很多Go web框架都通过封装 net/http 来实现核心功能，因此学习 net/http 是研究 Gin等框架的基础。',
-        author: '作者是我',
-        tags: ["源码", "标准库", "golang", "gin"],
-        theme: 'light',
-        featured: true,
-        cover: {
-          url: 'https://pic.lookcos.cn/i/usr/uploads/2022/04/2067928922.png',
-          square: 'https://pic.lookcos.cn/i/usr/uploads/2022/04/2067928922.png',
-          alt: 'cover'
-        },
-
-      }
-    }
-
-    const { frontmatter } = props
-    const type = frontmatter.tags[0]
-    const { pubDate, title, description, featured } = frontmatter
+    // const { frontmatter } = props
+    // const type = frontmatter.tags[0]
+    // const { pubDate, title, description, featured } = frontmatter
     const dateFormated = '时间叫回来我们很多东西'
     const SITE_LANG = "zh-CN";
 
@@ -280,7 +276,7 @@ export default defineComponent({
                 <div class={["tagssheet component"]}>
                   <div class="component-content">
                     {
-                      frontmatter.tags.map((tag) => {
+                      tags.map((tag) => {
                         return (
                           <a href={`/tags/${tag}`} class="tag">
                             {tag}
@@ -299,7 +295,7 @@ export default defineComponent({
                     <a class="content" href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank"
                     >版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</a
                     >
-                    <p class="content">作者： {frontmatter.author} 发表日期：{dateFormated}</p>
+                    <p class="content">作者： {author} 发表日期：{dateFormated}</p>
                   </div>
                 </div>
               </div>

@@ -18,10 +18,11 @@ export default defineComponent({
 
 
     const dateFormated = '日记越类';
-    const { level, href, cover, tags, title, } = attrs;
+    const { level, href, cover, tags, title, id } = attrs;
     const type = tags[0];
     const label = `${title} - ${type} - 发表时间 ${dateFormated}`;
 
+    // console.log(id, "id");
 
     // title, href, cover, tags, date, level
     // title={post.frontmatter.title}
@@ -30,7 +31,6 @@ export default defineComponent({
     // tags={post.frontmatter.tags}
     // cover={post.frontmatter.cover.url}
     // level="2"
-    // console.log(attrs, "attrsattrsattrsattrsattrs");
 
     return () => (
 
@@ -40,7 +40,8 @@ export default defineComponent({
         style="--nr-animation-transform-y:20%;"
       >
         <router-Link
-          to={'/detail'}
+          // to={'/detail'}
+          to={{ name: "catlogDetail", query: { id } }}
           class={["tile", "large-load", "medium-load", "small-load", { "tile-hero": level === "1", "tile-2up": level === "2", "tile-3up": level === "3" }]}
           aria-label={label}
         >
@@ -60,31 +61,6 @@ export default defineComponent({
 
 
 
-
-
-      // <li
-      //   role="listitem"
-      //   class={["tile-item", "nr-scroll-animation", { "item-hero": level.value === "1", "item-2up": level.value === "2", "item-3up": level.value === "3" }]}
-      //   style="--nr-animation-transform-y:20%;"
-      // >
-      //   <a
-      //     href={href.value}
-      //     class={["tile", "large-load", "medium-load", "small-load", { "tile-hero": level.value === "1", "tile-2up": level.value === "2", "tile-3up": level.value === "3" }]}
-      //     aria-label={label.value}
-      //   >
-      //     <div class="tile__media" aria-hidden="true">
-      //       <img class="cover image" src={cover.value} alt="lt" />
-      //     </div>
-
-      //     <div class="tile__description" aria-hidden="true">
-      //       <div class="tile__head">
-      //         <div class="tile__category">{type.value}</div>
-      //         <div class="tile__headline">{title.value}</div>
-      //       </div>
-      //       <div class="tile__timestamp icon-hide icon icon-before icon-clock">{dateFormated.value}</div>
-      //     </div>
-      //   </a>
-      // </li>
     )
   }
 })
