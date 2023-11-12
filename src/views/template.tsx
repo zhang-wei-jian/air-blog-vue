@@ -9,7 +9,7 @@ export default defineComponent({
 
 
 
-    console.log(props, "propspropsprops");
+    // console.log(props, "propspropsprops");
 
 
     const { dataList, allPosts } = toRefs(props);

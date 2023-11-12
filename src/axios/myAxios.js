@@ -4,7 +4,8 @@ const instance = axios.create({
   // baseURL: 'http://120.24.61.37:9501/',
   // baseURL: 'http://127.0.0.1:8080',
   // baseURL: 'http://localhost:8080',
-  baseURL: 'http://localhost:8898',
+  // baseURL: 'http://localhost:8898',
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   // baseURL: '/port',
   // headers: {
   //   Accept: 'fz56yse2881nd2r0fz56yse2881nd2r0'

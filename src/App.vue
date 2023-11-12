@@ -53,14 +53,14 @@
 
 
 
-  <router-view v-slot="{ Component }"> </router-view>
+  <!-- <router-view v-slot="{ Component }"> </router-view> -->
 
 
-  <!-- <router-view v-slot="{ Component }">
+  <router-view v-slot="{ Component }">
     <transition name="fade">
       <component :is="Component" />
     </transition>
-  </router-view> -->
+  </router-view>
 
 
   <div class="footer-main">
@@ -137,10 +137,10 @@ const get = () => {
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.2s ease;
 }
 
-.fade-enter,
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }

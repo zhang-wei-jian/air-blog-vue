@@ -1,4 +1,4 @@
-import { defineComponent, watch, ref, toRefs, onMounted, reactive, nextTick } from 'vue';
+import { defineComponent, watch, ref, toRefs, onMounted, onbeforeunload, reactive, nextTick } from 'vue';
 
 
 import txt from "./json";
@@ -221,13 +221,15 @@ export default defineComponent({
     const author = ref("")
     const tags = ref([])
     const content = ref("")
+    const theme = ref("")
 
     const { catlogItem } = toRefs(props)
     // const { pubDate, title, description, featured, author, tags, content } = reactive(catlogItem.value)
 
     watch(catlogItem, (val) => {
-      console.log("watch")
+
       if (val) {
+        // 重新赋值文章数据
         pubDate.value = val.pubDate
         title.value = val.title
         description.value = val.description
@@ -235,7 +237,21 @@ export default defineComponent({
         author.value = val.author
         tags.value = val.tags
         content.value = val.content
+        theme.value = val.theme
+
+        const appDom = document.getElementById("app")
+
+        if (theme.value === "light") {
+          appDom.classList.remove("theme-dark")
+        } else if (theme.value === "dark" || theme.value === "blak") {
+          appDom.classList.add("theme-dark")
+
+        }
+
+
+
         convertMarkdownToHtml(content.value)
+        // 重新加载图片动效
         var script = document.createElement("script");
         script.src = "/static/js/initPost.js";
         document.head.appendChild(script);
@@ -247,8 +263,8 @@ export default defineComponent({
     // const { pubDate, title, description, featured, author, tags, content } = toRefs(catlogItem.value)
 
     const type = tags[0]
-    console.log(title, "titletitle");
-    console.log(catlogItem, "propsprops");
+    // console.log(title, "titletitle");
+    // console.log(catlogItem, "propsprops");
 
     convertMarkdownToHtml(content)
 
@@ -257,6 +273,8 @@ export default defineComponent({
 
     const dateFormated = '时间叫回来我们很多东西'
     const SITE_LANG = "zh-CN";
+
+
 
     return () => (
 

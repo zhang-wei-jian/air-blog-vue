@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <TemplateComponent v-bind="attrs"></TemplateComponent>
-  </div>
+  <!-- <div> -->
+  <TemplateComponent v-bind="attrs"></TemplateComponent>
+  <!-- </div> -->
 </template>
 
 <script lang="ts" setup>
