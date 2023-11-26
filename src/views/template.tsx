@@ -3,7 +3,7 @@ import Title from "./Title/index.vue";
 import MoreTile from "./MoreTile/index.vue";
 // import "/static/js/animation.js"
 export default defineComponent({
-  name: 'MyComponent',
+  name: 'Home',
   props: ["dataList", "allPosts"],
   setup(props) {
 

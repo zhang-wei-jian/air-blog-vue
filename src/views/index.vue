@@ -79,5 +79,14 @@ get()
 
 </script>
 
+
+<script>
+export default {
+  name: 'Home',
+  // ... 其他组件选项
+};
+
+</script>
+
 <style scope>
 </style>

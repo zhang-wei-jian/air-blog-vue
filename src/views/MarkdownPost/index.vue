@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script  setup>
 
 import TemplateComponent from './template'
 import mockAxios from '../../axios/mockAxios'
@@ -62,6 +62,14 @@ getId()
 const clickHandle = async () => {
 
 }
+</script>
+
+<script>
+export default {
+  name: 'MarkdownPost',
+
+};
+
 </script>
 
 <style scope>

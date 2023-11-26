@@ -1,4 +1,4 @@
-import { defineComponent, watch, ref, toRefs, onMounted, onbeforeunload, reactive, nextTick } from 'vue';
+import { defineComponent, watch, ref, toRefs, onMounted, onBeforeUnmount, reactive, nextTick } from 'vue';
 
 
 import txt from "./json";
@@ -24,11 +24,19 @@ export default defineComponent({
   setup(props, { attrs }) {
 
 
+    // 挂载
     onMounted(async () => {
       // const module = await import('/static/js/initPost.js');
       var script = document.createElement("script");
       script.src = "/static/js/initPost.js";
       document.head.appendChild(script);
+
+    })
+
+    // 销毁前
+    onBeforeUnmount(() => {
+      const appDom = document.getElementById("app")
+      appDom.classList.remove("theme-dark")
 
     })
 

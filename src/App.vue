@@ -7,7 +7,7 @@
         <div class="nav-content-wrapper">
           <div class="nav-content">
             <!-- <a href="/" class="nav-title">{"Apple Blog"}</a> -->
-            <router-Link to="/" class="nav-title">{"Apple Blog"}</router-Link>
+            <router-Link to="/" class="nav-title">Apple Blog</router-Link>
             <div class="nav-menu">
 
               <!-- <a href="/archive" class="nav-item-content">目录</a> -->
@@ -56,10 +56,29 @@
   <!-- <router-view v-slot="{ Component }"> </router-view> -->
 
 
+
+
+
+  <!-- <transition name="fade">
+        <component :is="Component" />
+      </transition> -->
+
+  <!-- MarkdownPost -->
+
   <router-view v-slot="{ Component }">
+
+
+
+
     <transition name="fade">
-      <component :is="Component" />
+      <keep-alive :include="['Home']">
+        <component :is="Component" />
+      </keep-alive>
     </transition>
+
+
+
+
   </router-view>
 
 
@@ -69,7 +88,7 @@
         <div class="foot-nav">
           <div class="foot-nav-items">
             <div class="item">
-              <div class="logo">{SITE_TITLE}</div>
+              <div class="logo">Apple Blog</div>
               <!-- <div class="email">Email: {SITE_EMAIL}</div> -->
               <div class="email">Email: 34937436@QQ.com</div>
             </div>

@@ -17,7 +17,7 @@ const sb = import('@/views/index.vue')
 // 每个路由都需要映射到一个组件。
 // 我们后面再讨论嵌套路由。
 const routes = [
-  { path: '/', component: Home },
+  { path: '/', component: Home, name: 'home' },
   { path: '/About', component: () => About },
   { path: '/Archive', component: () => Archive },
   { path: '/MarkdownPost', component: () => MarkdownPost, name: "catlogDetail" },
@@ -52,11 +52,25 @@ const router = createRouter({
   },
 })
 
+
+let scrollY = 0
+
+
 router.beforeEach((to, from, next) => {
+
+
+
+
+
+  console.log(scrollY);
   // 每次路由切换前滚动到页面顶部
   if (to.path == "/MarkdownPost") {
-    window.scrollTo(0, 0)
+    scrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+    window.scrollTo(0, 10)
 
+  } else {
+
+    window.scrollTo(0, scrollY)
   }
 
 
