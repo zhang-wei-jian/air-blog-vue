@@ -18,11 +18,12 @@ export default defineComponent({
 
 
     const dateFormated = '日记越类';
-    const { level, href, cover, tags, title, id } = attrs;
+    const { level, href, cover, tags, title, id, date } = attrs;
     const type = tags[0];
     const label = `${title} - ${type} - 发表时间 ${dateFormated}`;
 
     // console.log(id, "id");
+    // console.log(attrs, "time");
 
     // title, href, cover, tags, date, level
     // title={post.frontmatter.title}
@@ -54,7 +55,7 @@ export default defineComponent({
               <div class="tile__category">{type}</div>
               <div class="tile__headline">{title}</div>
             </div>
-            <div class="tile__timestamp icon-hide icon icon-before icon-clock">{dateFormated}</div>
+            <div class="tile__timestamp icon-hide icon icon-before icon-clock">{date}</div>
           </div>
         </router-Link>
       </li>

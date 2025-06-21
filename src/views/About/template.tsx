@@ -30,8 +30,8 @@ export default defineComponent({
               <h2 class="tag-header">关于我</h2>
               <div class="tag-post-list">
                 <ul>
-                  <li>嫩爹</li>
-                  <li>😌</li>
+                  <li>Web3</li>
+                  <li>new things</li>
                   <li>music</li>
                 </ul>
               </div>
@@ -42,11 +42,12 @@ export default defineComponent({
               <div class="tag-post-list">
                 <ul>
                   <li>
-                    <a href="https://twitter.com/spacex" target="_blank"> Twitter</a>
-                  </li>
-                  <li>
                     <a href="https://github.com/zhang-wei-jian" target="_blank">Github</a>
                   </li>
+                  {/* <li>
+                    <a href="https://twitter.com/spacex" target="_blank"> Twitter</a>
+                  </li> */}
+
                 </ul>
               </div>
             </div>

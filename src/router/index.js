@@ -4,7 +4,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 // 1. 定义路由组件.
 // 也可以从其他文件导入
 import Home from '../views/index.vue'
-// import Home from ''
+// import MarkdownPost from '@/views/MarkdownPost/index.vue'
+// const Home = import("../views/index.vue")
 // const Home = { template: '<div>Home</div>' }
 
 const About = import('@/views/About/index.vue')

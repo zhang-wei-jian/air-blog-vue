@@ -12,7 +12,7 @@ import TemplateComponent from './template'
 import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
 import { genFileId } from 'element-plus'
-import { getCatlog } from '@/api/catlog.js'
+// import { getCatlog } from '@/api/catlog.js'
 
 
 const dataList = ref([
@@ -70,7 +70,7 @@ const get = async () => {
 
 
 }
-get()
+// get()
 
 </script>
 
@@ -79,9 +79,3 @@ get()
   /* background-color: red; */
 }
 </style>
-
-
-
-
-
-

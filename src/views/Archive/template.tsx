@@ -1,5 +1,5 @@
 import { defineComponent, ref, toRefs } from 'vue';
-
+import { useRouter } from 'vue-router';
 export default defineComponent({
   name: 'MyComponent',
   props: {
@@ -13,7 +13,16 @@ export default defineComponent({
       ['Post 4', 'Post 5', 'Post 6'],
     ]);
 
-    const tags = ref(['Tag 1', 'Tag 2', 'Tag 3']);
+    let postsArr = []
+
+    postsArr = JSON.parse(sessionStorage.getItem("posts"))
+    if (!postsArr) {
+      // const router = useRouter();
+      // router.push({ name: 'home' });
+    }
+    console.log(postsArr);
+
+    const tags = ref(postsArr);
     return () => (
 
 
@@ -23,10 +32,24 @@ export default defineComponent({
             {
               tags.value.map((tag, index) => {
                 return (
-                  <div class="archive-tag">
-                    <h2 class="tag-header">{tag}</h2>
-                    <div class="tag-post-list">{posts.value[index].length !== 0 ? <ArchivePostList posts={posts.value[index]} /> : <div class="no-posts">暂无文章</div>}</div>
-                  </div>
+
+
+                  <router-Link
+                    to={{ name: "catlogDetail", query: { id: tag.frontmatter.id } }}
+
+                  >
+
+
+
+                    <div class="archive-tag">
+                      <h3 class="tag-header">{tag.frontmatter.title}</h3>
+                      {/* <div class="tag-post-list">{posts.value[index].length !== 0 ? <ArchivePostList posts={posts.value[index]} /> : <div class="no-posts">暂无文章</div>}</div> */}
+
+
+                    </div>
+                  </router-Link>
+
+
                 );
               })
             }

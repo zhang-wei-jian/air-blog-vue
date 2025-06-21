@@ -230,6 +230,8 @@ export default defineComponent({
     const tags = ref([])
     const content = ref("")
     const theme = ref("")
+    const dateFormated = ref("222")
+    // const dateFormated = '2035-06-01'
 
     const { catlogItem } = toRefs(props)
     // const { pubDate, title, description, featured, author, tags, content } = reactive(catlogItem.value)
@@ -237,7 +239,11 @@ export default defineComponent({
     watch(catlogItem, (val) => {
 
       if (val) {
+
+
+
         // 重新赋值文章数据
+        // dateFormated.value = val.pubDate
         pubDate.value = val.pubDate
         title.value = val.title
         description.value = val.description
@@ -279,7 +285,7 @@ export default defineComponent({
 
 
 
-    const dateFormated = '时间叫回来我们很多东西'
+
     const SITE_LANG = "zh-CN";
 
 
@@ -299,7 +305,7 @@ export default defineComponent({
                   <div class="component-content">
                     <div class="category-eyebrow">
                       <span class="category-eyebrow__category category_original">{type}</span>
-                      <span class="category-eyebrow__date">{dateFormated}</span>
+                      <span class="category-eyebrow__date">{pubDate.value}</span>
                     </div>
                   </div>
                 </div>
@@ -334,7 +340,7 @@ export default defineComponent({
                     <a class="content" href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank"
                     >版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</a
                     >
-                    <p class="content">作者： {author.value} 发表日期：{dateFormated}</p>
+                    <p class="content">作者： {author.value} 发表日期：{pubDate.value}</p>
                   </div>
                 </div>
               </div>

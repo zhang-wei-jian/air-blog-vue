@@ -151,14 +151,21 @@ export default defineComponent({
               {
                 allPosts.value.slice(0, 6).map((post) => {
                   return (
+                    // <p>{post.frontmatter.title}</p>
+
+                    // <img src={post.frontmatter.cover.square !== "" ? post.frontmatter.cover.square : post.frontmatter.cover.url} alt="" width={100} />
+
                     <MoreTile
                       title={post.frontmatter.title}
                       href={post.url} date={post.frontmatter.pubDate}
                       tags={post.frontmatter.tags}
                       cover={post.frontmatter.cover.square !== "" ? post.frontmatter.cover.square : post.frontmatter.cover.url}
+                      // cover={post.frontmatter.cover.url}
                       id={post.frontmatter.id}
-                      key={post.frontmatter.id}
+                      // key={post.frontmatter.id}
+                      key={post.frontmatter.title}
                     />
+
                   );
                 })
               }

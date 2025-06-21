@@ -61,8 +61,13 @@ const get = async () => {
         }
       }
       dataItem.frontmatter.cover.url = dataItem.frontmatter.cover.url ? dataItem.frontmatter.cover.url : "https://cdn.seovx.com/ha/?mom=302&timestamp=" + index
+
+      
       return dataItem
     })
+    // 缓存到内存
+    sessionStorage.setItem("posts", JSON.stringify(dataList.value))
+
   } catch (error) {
     ElMessage.error(error)
   }
@@ -88,5 +93,4 @@ export default {
 
 </script>
 
-<style scope>
-</style>
+<style scope></style>

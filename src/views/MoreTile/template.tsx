@@ -8,7 +8,9 @@ export default defineComponent({
   },
   setup(props, { attrs }) {
     // console.log(props, attrs, "attrs");
-    const { title, href, cover, tags, date } = attrs;
+    const { title, href, cover, tags, date, id } = attrs;
+
+    // console.log(attrs);
 
 
     const dateFormated = '2035 年 6 月 1 日';
@@ -18,6 +20,9 @@ export default defineComponent({
     // const label = `${title} - ${type} - 发表时间 ${dateFormated}`;
     const label = `- 发表时间 `;
 
+    // console.log(cover, "cover");
+
+
     return () => (
       <li
         role="listitem"
@@ -25,13 +30,17 @@ export default defineComponent({
         style="--nr-animation-transform-y:20%;"
       >
         <router-Link
-          to={'/detail'}
+          // to={'/detail'}
+          to={{ name: "catlogDetail", query: { id } }}
           class="tile tile-list medium-load small-load large-load"
           aria-label={label}
         >
           <div class="tile__media" aria-hidden="true">
             {/* <img class="cover image" v-lazy={cover} alt="lt" /> */}
             <img class="cover image" src={cover} alt="lt" />
+            {/* <p>{cover}</p> */}
+            {/* <img class="cover image" src={cover} alt="lt" /> */}
+            <p> {cover}</p>
           </div>
           <div class="tile__description" aria-hidden="true">
             <div class="tile__head">
