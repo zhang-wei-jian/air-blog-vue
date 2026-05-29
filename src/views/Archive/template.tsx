@@ -1,66 +1,74 @@
-import { defineComponent, ref, toRefs } from 'vue';
+import { defineComponent, ref, toRefs, computed } from 'vue';
 import { useRouter } from 'vue-router';
 export default defineComponent({
   name: 'MyComponent',
   props: {
-    msg: String
+    dataList: Array
   },
-  setup(aa, { attrs }) {
-    const posts = ref([
-      // 每个数组元素代表一个帖子，你可以根据实际需要修改帖子内容
-      ['Post 1', 'Post 2'],
-      ['Post 3'],
-      ['Post 4', 'Post 5', 'Post 6'],
-    ]);
+  setup(props) {
+    const { dataList } = toRefs(props);
+    const currentPage = ref(1);
+    const pageSize = 10;
 
-    let postsArr = []
+    const total = computed(() => dataList.value.length);
+    const totalPages = computed(() => Math.ceil(total.value / pageSize));
+    const pagedData = computed(() => {
+      const start = (currentPage.value - 1) * pageSize;
+      return dataList.value.slice(start, start + pageSize);
+    });
 
-    postsArr = JSON.parse(sessionStorage.getItem("posts"))
-    if (!postsArr) {
-      // const router = useRouter();
-      // router.push({ name: 'home' });
-    }
-    console.log(postsArr);
+    const prevPage = () => {
+      if (currentPage.value > 1) currentPage.value--;
+    };
+    const nextPage = () => {
+      if (currentPage.value < totalPages.value) currentPage.value++;
+    };
+    const goToPage = (page) => {
+      currentPage.value = page;
+    };
 
-    const tags = ref(postsArr);
     return () => (
-
-
       <>
         <section class="archive">
           <div class="section-content section-tag">
+            <div class="archive-header">
+              <h2>全部文章</h2>
+              <span class="archive-total">共 {total.value} 篇</span>
+            </div>
+            <div class="archive-list">
+              {
+                pagedData.value.map((tag) => {
+                  return (
+                    <router-Link
+                      to={{ name: "catlogDetail", query: { id: tag.frontmatter.id } }}
+                    >
+                      <div class="archive-tag">
+                        <h3 class="tag-header">{tag.frontmatter.title}</h3>
+                      </div>
+                    </router-Link>
+                  );
+                })
+              }
+            </div>
             {
-              tags.value.map((tag, index) => {
-                return (
-
-
-                  <router-Link
-                    to={{ name: "catlogDetail", query: { id: tag.frontmatter.id } }}
-
-                  >
-
-
-
-                    <div class="archive-tag">
-                      <h3 class="tag-header">{tag.frontmatter.title}</h3>
-                      {/* <div class="tag-post-list">{posts.value[index].length !== 0 ? <ArchivePostList posts={posts.value[index]} /> : <div class="no-posts">暂无文章</div>}</div> */}
-
-
-                    </div>
-                  </router-Link>
-
-
-                );
-              })
+              totalPages.value > 1 && (
+                <div class="archive-pagination">
+                  <button disabled={currentPage.value === 1} onClick={prevPage}>上一页</button>
+                  {Array.from({ length: totalPages.value }, (_, i) => i + 1).map((page) => (
+                    <button
+                      class={{ active: page === currentPage.value }}
+                      onClick={() => goToPage(page)}
+                    >
+                      {page}
+                    </button>
+                  ))}
+                  <button disabled={currentPage.value === totalPages.value} onClick={nextPage}>下一页</button>
+                </div>
+              )
             }
           </div>
         </section>
       </>
-
-
-
-
-
     )
   }
 })

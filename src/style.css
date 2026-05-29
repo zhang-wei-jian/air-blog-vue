@@ -7460,3 +7460,60 @@ blockquote {
 blockquote p {
   display: inline;
 }
+
+.archive-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.archive-header h2 {
+  margin: 0;
+}
+
+.archive-total {
+  font-size: 14px;
+  color: #6e6e73;
+}
+
+.archive-list {
+  height: 720px;
+}
+
+.archive-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.archive-pagination button {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid #d2d2d7;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  color: #1d1d1f;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.archive-pagination button:hover:not(:disabled) {
+  border-color: #0071e3;
+  color: #0071e3;
+}
+
+.archive-pagination button.active {
+  background: #0071e3;
+  border-color: #0071e3;
+  color: #fff;
+}
+
+.archive-pagination button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}

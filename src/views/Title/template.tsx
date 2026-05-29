@@ -1,4 +1,5 @@
 import { defineComponent, ref, toRefs } from 'vue';
+import { formatDate } from '@/utils.js';
 
 export default defineComponent({
   name: 'Title',
@@ -17,9 +18,9 @@ export default defineComponent({
     // console.log(attrs, "attrsattrsattrs");
 
 
-    const dateFormated = '日记越类';
     const { level, href, cover, tags, title, id, date } = attrs;
     const type = tags[0];
+    const dateFormated = formatDate(date);
     const label = `${title} - ${type} - 发表时间 ${dateFormated}`;
 
     // console.log(id, "id");
@@ -55,7 +56,7 @@ export default defineComponent({
               <div class="tile__category">{type}</div>
               <div class="tile__headline">{title}</div>
             </div>
-            <div class="tile__timestamp icon-hide icon icon-before icon-clock">{date}</div>
+            <div class="tile__timestamp icon-hide icon icon-before icon-clock">{dateFormated}</div>
           </div>
         </router-Link>
       </li>
