@@ -1,5 +1,5 @@
 import { defineComponent, watch, ref, toRefs, onMounted, onBeforeUnmount, reactive, nextTick } from 'vue';
-
+import { formatDate } from '@/utils.js';
 
 import txt from "./json";
 // import "/static/js/initPost.js"
@@ -305,7 +305,7 @@ export default defineComponent({
                   <div class="component-content">
                     <div class="category-eyebrow">
                       <span class="category-eyebrow__category category_original">{type}</span>
-                      <span class="category-eyebrow__date">{pubDate.value}</span>
+                      <span class="category-eyebrow__date">{formatDate(pubDate.value)}</span>
                     </div>
                   </div>
                 </div>
@@ -340,7 +340,7 @@ export default defineComponent({
                     <a class="content" href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank"
                     >版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</a
                     >
-                    <p class="content">作者： {author.value} 发表日期：{pubDate.value}</p>
+                    <p class="content">作者： {author.value} 发表日期：{formatDate(pubDate.value)}</p>
                   </div>
                 </div>
               </div>
