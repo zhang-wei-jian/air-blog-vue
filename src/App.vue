@@ -23,14 +23,6 @@
                 <div class="nav-item-wrapper">关于 </div>
               </router-Link>
 
-
-              <router-Link to="/" class="nav-item-content">
-
-                <div class="nav-item-wrapper">
-                  RSS </div>
-              </router-Link>
-              <!-- <a href="/rss.xml" class="nav-item-content" target="_blank">RSS</a> -->
-
               <ThemeToggle />
 
             </div>
