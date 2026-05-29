@@ -5083,8 +5083,8 @@ html.no-touch.no-reduced-motion .tile.tile-list[data-focus-method=key] .media--v
 
 
 .tile.tile-list {
-  border-radius: revert;
-  overflow: revert;
+  border-radius: 16px;
+  overflow: hidden;
   z-index: revert;
   position: revert;
   background-color: transparent;
@@ -7526,4 +7526,126 @@ blockquote p {
 .archive-pagination button:disabled {
   opacity: 0.4;
   cursor: default;
+}
+
+/* ==================== 光晕 & 玻璃效果 ==================== */
+
+/* 导航栏玻璃效果增强 */
+.nav {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .nav {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 卡片光晕效果 */
+.tile {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tile:hover {
+  transform: scale(1.02);
+}
+
+/* 浅色模式卡片光晕 */
+[data-theme="light"] .tile:hover,
+:root .tile:hover {
+  box-shadow:
+    0 0 0 1px rgba(0, 108, 204, 0.1),
+    0 4px 20px rgba(0, 108, 204, 0.15),
+    0 8px 40px rgba(0, 108, 204, 0.1);
+}
+
+/* 深色模式卡片光晕 */
+[data-theme="dark"] .tile:hover {
+  box-shadow:
+    0 0 0 1px rgba(41, 151, 255, 0.2),
+    0 4px 20px rgba(41, 151, 255, 0.2),
+    0 8px 40px rgba(41, 151, 255, 0.15);
+}
+
+/* 背景渐变光晕装饰 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* 浅色模式背景光晕 */
+[data-theme="light"] body::before,
+:root body::before {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(120, 119, 198, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(0, 108, 204, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 60% at 50% 100%, rgba(120, 119, 198, 0.05) 0%, transparent 50%);
+}
+
+/* 深色模式背景光晕 */
+[data-theme="dark"] body::before {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(90, 50, 200, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(0, 100, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 60% at 50% 100%, rgba(90, 50, 200, 0.08) 0%, transparent 50%);
+}
+
+/* 玻璃卡片效果 - 用于特定区域 */
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+}
+
+[data-theme="dark"] .glass-card {
+  background: rgba(44, 44, 46, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 按钮光晕效果 */
+.cta-primary-light,
+.theme-toggle {
+  transition: all 0.3s ease;
+}
+
+.cta-primary-light:hover,
+.theme-toggle:hover {
+  box-shadow: 0 4px 15px rgba(0, 108, 204, 0.3);
+}
+
+[data-theme="dark"] .cta-primary-light:hover,
+[data-theme="dark"] .theme-toggle:hover {
+  box-shadow: 0 4px 15px rgba(41, 151, 255, 0.3);
+}
+
+/* 标签光晕效果 */
+.tag {
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.4);
+}
+
+/* 导航链接悬浮效果 - 保持原样，不添加额外效果 */
+
+/* 文章标题光晕 */
+.hero-headline,
+.article-headline {
+  transition: color 0.2s ease;
+}
+
+.hero-headline:hover,
+.article-headline:hover {
+  color: var(--color-link);
 }
