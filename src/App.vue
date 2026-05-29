@@ -31,6 +31,8 @@
               </router-Link>
               <!-- <a href="/rss.xml" class="nav-item-content" target="_blank">RSS</a> -->
 
+              <ThemeToggle />
+
             </div>
           </div>
         </div>
@@ -90,7 +92,7 @@
             <div class="item">
               <div class="logo">Apple Blog</div>
               <!-- <div class="email">Email: {SITE_EMAIL}</div> -->
-              <div class="email">Email: 34937436@QQ.com</div>
+              <!-- <div class="email">Email: 34937436@QQ.com</div> -->
             </div>
 
             <div class="item products">
@@ -135,6 +137,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 // import Antx6 from './components/antx6.vue'
 import LoginToken from "./components/LoginTest/index.vue"
+import ThemeToggle from "./components/ThemeToggle/index.vue"
 import { useRoute } from 'vue-router';
 import { watch, ref } from 'vue';
 import { getCatlog } from '@/api/catlog.js'
