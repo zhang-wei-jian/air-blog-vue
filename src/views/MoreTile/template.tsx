@@ -1,24 +1,17 @@
 import { defineComponent, ref } from 'vue';
-// import { formatDate } from "../utils";
+import { formatDate } from '@/utils.js';
+
 export default defineComponent({
   name: 'TemplateComponent',
   props: {
     msg: String,
-    // cover: String,
   },
   setup(props, { attrs }) {
-    // console.log(props, attrs, "attrs");
     const { title, href, cover, tags, date, id } = attrs;
 
-    // console.log(attrs);
-
-
-    const dateFormated = '2035 年 6 月 1 日';
-    // const dateFormated = formatDate(date);
-    // let type = tags[0];
-    let type = 'type'
-    // const label = `${title} - ${type} - 发表时间 ${dateFormated}`;
-    const label = `- 发表时间 `;
+    const dateFormated = formatDate(date);
+    let type = tags[0];
+    const label = `${title} - ${type} - 发表时间 ${dateFormated}`;
 
     // console.log(cover, "cover");
 
